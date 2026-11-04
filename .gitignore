@@ -1,0 +1,8 @@
+*.xlsm
+*.xlsx
+*.csv
+*.txt
+
+*.ini
+*.log
+__pycache__
