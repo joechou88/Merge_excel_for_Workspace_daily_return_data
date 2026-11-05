@@ -35,3 +35,13 @@ The script extracts and merges daily security data across multiple worksheets wi
   - `$$ER: 2311,NO DATA AVAILABLE`
   - `$$ER: 2361,NO DATA AVAILABLE`
   - `$$ER: 2380,NO DATA IN REQUESTED PERIOD`
+
+## Merge country market returns
+The script extracts time-series data from a consolidated workbook and merges individual country worksheets into a single `.csv` file. It automates structural mapping to align all countries chronologically.
+
+- **Input:** A multi-sheet `.xlsm` file located in `./raw_data/market_daily_return/market-return_2000-2025.xlsm`
+- **Output:** A single merged `.csv` file saved to `./merge_country_csv/market_daily_return/market-return_2000-2025.csv`
+
+**Data Merging Rules:**
+- **REQUEST_TABLE**: Serves as a mapping directory. Reads Column K and Column M (starting from row 7 downwards) to dynamically link each worksheet (e.g., `工作表1`) to its respective country (e.g., `Australia`).
+- **工作表1, 工作表2, ...**: Appends data horizontally (column-wise) based on an outer join of the shared `Date` column. The top header row of each sheet is ignored to start reading strictly from the time-series data, and the value column is renamed to the mapped country name.
