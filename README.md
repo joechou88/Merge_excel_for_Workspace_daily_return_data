@@ -13,7 +13,7 @@ The script identifies and merges fragmented `.xlsm` files belonging to the same 
 The script extracts and merges daily security data across multiple worksheets within each `.xlsm` file into a unified dataset. It automatically maps geographical codes and aligns time-series variables for each company.
 
 - **Input:** `.xlsm` files located in `./raw_data/security_daily_return/`
-- **Output:** Merged `.csv` files saved to `./merge_datatype_sas/security_daily_return/` (e.g., `{country}_sec_ret_2015_2025.csv`)
+- **Output:** Merged `.csv` files saved to `./merge_datatype_csv/security_daily_return/` (e.g., `{country}-sec-ret_2015-2025.csv`)
 
 **Data Mapping & Extraction Rules:**
 * **DSCD**: Extracted horizontally starting from cell B2 in Worksheet 2.
@@ -39,8 +39,18 @@ The script extracts and merges daily security data across multiple worksheets wi
 ## Merge country for market daily return
 The script extracts time-series data from a consolidated workbook and merges individual country worksheets into a single `.csv` file. It automates structural mapping to align all countries chronologically.
 
-- **Input:** A multi-sheet `.xlsm` file located in `./raw_data/market_daily_return/market-return_2000-2025.xlsm`
-- **Output:** A single merged `.csv` file saved to `./merge_country_csv/market_daily_return/market-return_2000-2025.csv`
+- **Input:** A multi-sheet `.xlsm` file located in `./raw_data/market_daily_return/market-daily-return_2000-2025.xlsm`
+- **Output:** A single merged `.csv` file saved to `./merge_country_csv/market_daily_return/market-daily-return_2000-2025.csv`
+
+**Data Merging Rules:**
+- **REQUEST_TABLE**: Serves as a mapping directory. Reads Column K and Column M (starting from row 7 downwards) to dynamically link each worksheet (e.g., `工作表1`) to its respective country (e.g., `Australia`).
+- **工作表1, 工作表2, ...**: Appends data horizontally (column-wise) based on an outer join of the shared `Date` column. The top header row of each sheet is ignored to start reading strictly from the time-series data, and the value column is renamed to the mapped country name.
+
+## Merge country for daily exchange rate
+The script extracts time-series data from a consolidated workbook and merges individual country worksheets into a single `.csv` file. It automates structural mapping to align all countries chronologically.
+
+- **Input:** A multi-sheet `.xlsm` file located in `./raw_data/daily_exchange_rate/daily-exchange-rate-to-USD_2000-2025.xlsm`
+- **Output:** A single merged `.csv` file saved to `./merge_country_csv/daily_exchange_rate/daily-exchange-rate_2000-2025.csv`
 
 **Data Merging Rules:**
 - **REQUEST_TABLE**: Serves as a mapping directory. Reads Column K and Column M (starting from row 7 downwards) to dynamically link each worksheet (e.g., `工作表1`) to its respective country (e.g., `Australia`).
