@@ -36,7 +36,7 @@ The script extracts and merges daily security data across multiple worksheets wi
   - `$$ER: 2361,NO DATA AVAILABLE`
   - `$$ER: 2380,NO DATA IN REQUESTED PERIOD`
 
-## Merge country market returns
+## Merge country for market daily return
 The script extracts time-series data from a consolidated workbook and merges individual country worksheets into a single `.csv` file. It automates structural mapping to align all countries chronologically.
 
 - **Input:** A multi-sheet `.xlsm` file located in `./raw_data/market_daily_return/market-return_2000-2025.xlsm`
