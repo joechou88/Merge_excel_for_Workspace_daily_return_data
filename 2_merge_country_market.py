@@ -15,9 +15,9 @@ logging.basicConfig(
     ]
 )
 
-INPUT_FILEPATH = './raw_data/market_daily_return/market-return_2000-2025.xlsm'
+INPUT_FILEPATH = './raw_data/market_daily_return/market-daily-return_2000-2025.xlsm'
 OUTPUT_DIRECTORY = './merge_country_csv/market_daily_return'
-OUTPUT_FILEPATH = f'{OUTPUT_DIRECTORY}/market-return_2000-2025.csv'
+OUTPUT_FILEPATH = f'{OUTPUT_DIRECTORY}/market-daily-return_2000-2025.csv'
 
 os.makedirs(OUTPUT_DIRECTORY, exist_ok=True)
 
